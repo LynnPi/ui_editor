@@ -32,13 +32,22 @@ public class BuildUIAssetBundle : EditorWindow {
 
         if (GUILayout.Button("Commit")) {
             Debug.Log("Commit");
+
+#if UNITY_EDITOR_WIN
+            Debug.Log("UNITY_EDITOR_WIN");
             string cmd = "C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Git/Git GUI.lnk";
             System.Diagnostics.Process.Start(cmd);
+#endif
+
+#if UNITY_EDITOR_OSX
+            Debug.Log("UNITY_EDITOR_OSX");
+#endif
         }
 
         if (GUILayout.Button("Update")) {
             Debug.Log("Update");
         }
+
     }
 
     private void Build(string outputPath, BuildTarget platform = BuildTarget.Android) {
